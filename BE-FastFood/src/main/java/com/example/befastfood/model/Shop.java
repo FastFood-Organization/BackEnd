@@ -23,6 +23,18 @@ public class Shop {
     @Column(columnDefinition = "Longtext")
     private String img;
 
+    @Column(name = "bank_number", columnDefinition = "varchar(30)")
+    private String bankNumber;
+
+    @Column(name = "account_name", columnDefinition = "varchar(50)")
+    private String accountName;
+
+    @Column(name = "bank_branch", columnDefinition = "varchar(120)")
+    private String brankBranch;
+
+    @Column(name = "bank_name", columnDefinition = "varchar(55)")
+    private String bankName;
+
     @Column(columnDefinition = "Bit")
     @ColumnDefault("0")
     private boolean isFlag;
@@ -30,12 +42,16 @@ public class Shop {
     public Shop() {
     }
 
-    public Shop(Integer id, String name, String address, String descriptions, String img, boolean isFlag) {
+    public Shop(Integer id, String name, String address, String descriptions, String img, String bankNumber, String accountName, String brankBranch, String bankName, boolean isFlag) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.descriptions = descriptions;
         this.img = img;
+        this.bankNumber = bankNumber;
+        this.accountName = accountName;
+        this.brankBranch = brankBranch;
+        this.bankName = bankName;
         this.isFlag = isFlag;
     }
 
@@ -77,6 +93,38 @@ public class Shop {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getBankNumber() {
+        return bankNumber;
+    }
+
+    public void setBankNumber(String bankNumber) {
+        this.bankNumber = bankNumber;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
+    public String getBrankBranch() {
+        return brankBranch;
+    }
+
+    public void setBrankBranch(String brankBranch) {
+        this.brankBranch = brankBranch;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
     }
 
     public boolean isFlag() {

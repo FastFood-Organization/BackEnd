@@ -18,9 +18,13 @@ public class Bill {
     @JoinColumn(name = "sale_id")
     private Sale idSale;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer idCustomer;
+
+    @ManyToOne
+    @JoinColumn(name = "method_id")
+    private PaymentMethod idMethod;
 
     @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(name = "product_bill", joinColumns = @JoinColumn(name = "product_id"),
@@ -30,12 +34,12 @@ public class Bill {
     public Bill() {
     }
 
-
-    public Bill(Integer id, LocalDateTime time, Sale idSale, Customer idCustomer, Set<Product> products) {
+    public Bill(Integer id, LocalDateTime time, Sale idSale, Customer idCustomer, PaymentMethod idMethod, Set<Product> products) {
         this.id = id;
         this.time = time;
         this.idSale = idSale;
         this.idCustomer = idCustomer;
+        this.idMethod = idMethod;
         this.products = products;
     }
 
@@ -77,5 +81,13 @@ public class Bill {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    public PaymentMethod getIdMethod() {
+        return idMethod;
+    }
+
+    public void setIdMethod(PaymentMethod idMethod) {
+        this.idMethod = idMethod;
     }
 }
